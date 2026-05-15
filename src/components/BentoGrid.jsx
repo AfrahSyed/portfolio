@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 import { LayoutGroup, motion } from 'framer-motion';
 import {
   ArrowUpRight,
@@ -50,6 +50,7 @@ export default function BentoGrid() {
             data-spread={spread ? 'true' : 'false'}
           >
             <Header spread={spread} />
+            <ProfileCard spread={spread} />
             <HeroCard spread={spread} delay={0} />
             <ExperienceCard spread={spread} delay={STAGGER} />
             <AboutCard spread={spread} delay={STAGGER * 2} />
@@ -60,7 +61,6 @@ export default function BentoGrid() {
             <ProjectsSection spread={spread} />
             <CertificationsCard spread={spread} delay={STAGGER * 8} />
             <VolunteerCard spread={spread} delay={STAGGER * 9} />
-            <ProfileCard spread={spread} />
           </motion.div>
         </LayoutGroup>
       </motion.div>
@@ -83,7 +83,7 @@ function HeroCard({ spread, delay }) {
         <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--color-muted)]">
           Portfolio | {new Date().getFullYear()}
         </p>
-        <h2 className="mt-3 font-display text-[1.75rem] leading-[1.12] md:text-[2rem]">
+        <h2 className="mt-3 font-display text-xl leading-[1.12] sm:text-2xl lg:text-[2rem]">
           Turning ideas into{' '}
           <em className="not-italic text-[var(--color-accent-3)]">live products</em> that people love
           to use.
@@ -101,7 +101,7 @@ function AboutCard({ spread, delay }) {
       delay={delay}
       stackOrder={2}
       tone="mint"
-      cardClass="card-about bento-scroll overflow-y-auto"
+      cardClass="card-about"
     >
       <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--color-muted)]">
         About
@@ -120,7 +120,7 @@ function ExperienceCard({ spread, delay }) {
       stackOrder={3}
       tone="sky"
       cardClass="card-experience card-top"
-      className="flex max-h-[300px] flex-col !p-5"
+      className="flex flex-col !p-5"
     >
       <div className="flex shrink-0 items-center justify-between">
         <p className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--color-muted)]">
@@ -129,7 +129,7 @@ function ExperienceCard({ spread, delay }) {
         </p>
         <ArrowUpRight size={18} className="text-[var(--color-accent-3)]" />
       </div>
-      <motion.div className="bento-scroll mt-3 min-h-0 flex-1 space-y-5 pr-0.5">
+      <div className="bento-scroll mt-3 max-h-[min(420px,55vh)] space-y-5 pr-0.5 lg:max-h-[300px]">
         {experience.map((job) => (
           <div
             key={job.role + job.company}
@@ -149,7 +149,7 @@ function ExperienceCard({ spread, delay }) {
             </ul>
           </div>
         ))}
-      </motion.div>
+      </div>
     </BentoCard>
   );
 }
@@ -202,7 +202,7 @@ function SkillsCard({ spread, delay }) {
                   {item}
                 </span>
               ))}
-            </motion.div>
+      </motion.div>
           </div>
         ))}
       </div>

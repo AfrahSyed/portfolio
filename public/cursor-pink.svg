@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+  <path
+    d="M5 3L5 22L11.5 15.5L16 24L20 22L14.5 13.5H22L5 3Z"
+    fill="#ff6b9d"
+    stroke="#ffffff"
+    stroke-width="1.75"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M5 3L5 22L11.5 15.5L16 24L20 22L14.5 13.5H22L5 3Z"
+    fill="none"
+    stroke="#7c6bff"
+    stroke-width="0.75"
+    stroke-linejoin="round"
+    opacity="0.85"
+  />
+</svg>

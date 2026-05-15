@@ -35,6 +35,34 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Custom pink arrow cursor (desktop / trackpad) */
+@media (pointer: fine) {
+  html,
+  body,
+  #root {
+    cursor: url('/cursor-pink.svg') 5 3, auto;
+  }
+
+  a,
+  button,
+  [role='button'],
+  label,
+  select,
+  summary,
+  input[type='submit'],
+  input[type='button'],
+  input[type='reset'] {
+    cursor: url('/cursor-pink.svg') 5 3, pointer;
+  }
+
+  input:not([type='submit']):not([type='button']):not([type='reset']):not([type='checkbox']):not(
+      [type='radio']
+    ),
+  textarea {
+    cursor: url('/cursor-pink.svg') 5 3, text;
+  }
+}
+
 #root {
   min-height: 100vh;
 }
@@ -127,8 +155,12 @@ body {
 .bento-stage[data-spread='true'] .bento-header {
   grid-column: 1 / -1;
   grid-row: 1;
+  width: 100%;
+  max-width: 100%;
   opacity: 1;
   pointer-events: auto;
+  justify-self: stretch;
+  align-self: stretch;
 }
 
 .bento-stage[data-spread='true'] .bento-card {
@@ -142,72 +174,238 @@ body {
   align-self: stretch;
 }
 
-@media (min-width: 768px) {
-  /* Row 2 — equal three columns, matched height (only top row) */
+/* Mobile: profile card directly under header */
+@media (max-width: 767px) {
+  .bento-stage[data-spread='true'] {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .bento-stage[data-spread='true'] .bento-header {
+    order: 0;
+    width: 100%;
+    max-width: 100%;
+    align-self: stretch;
+  }
+
+  .bento-stage[data-spread='true'] .bento-card {
+    width: 100%;
+    max-width: 100%;
+    align-self: stretch;
+  }
+
+  .bento-stage[data-spread='true'] .card-profile {
+    order: 1;
+  }
+
+  .bento-stage[data-spread='true'] .card-hero {
+    order: 2;
+  }
+
+  .bento-stage[data-spread='true'] .card-experience {
+    order: 3;
+    max-height: 360px;
+  }
+
+  .bento-stage[data-spread='true'] .card-about {
+    order: 4;
+    max-height: none;
+  }
+
+  .bento-stage[data-spread='true'] .card-education {
+    order: 5;
+  }
+
+  .bento-stage[data-spread='true'] .card-honors {
+    order: 6;
+  }
+
+  .bento-stage[data-spread='true'] .card-links {
+    order: 7;
+  }
+
+  .bento-stage[data-spread='true'] .card-skills {
+    order: 8;
+    max-height: 320px;
+  }
+
+  .bento-stage[data-spread='true'] .card-projects {
+    order: 9;
+  }
+
+  .bento-stage[data-spread='true'] .card-certifications {
+    order: 10;
+  }
+
+  .bento-stage[data-spread='true'] .card-volunteer {
+    order: 11;
+  }
+
+  .bento-stage[data-spread='true'] .card-top {
+    min-height: auto;
+    max-height: none;
+  }
+}
+
+/* Tablet: full-width cards so text is not squeezed */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .bento-stage[data-spread='true'] {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .bento-stage[data-spread='true'] .bento-header {
+    order: 0;
+  }
+
+  .bento-stage[data-spread='true'] .card-profile {
+    order: 1;
+  }
+
+  .bento-stage[data-spread='true'] .card-hero {
+    order: 2;
+  }
+
+  .bento-stage[data-spread='true'] .card-experience {
+    order: 3;
+  }
+
+  .bento-stage[data-spread='true'] .card-about {
+    order: 4;
+  }
+
+  .bento-stage[data-spread='true'] .card-education {
+    order: 5;
+  }
+
+  .bento-stage[data-spread='true'] .card-honors {
+    order: 6;
+  }
+
+  .bento-stage[data-spread='true'] .card-links {
+    order: 7;
+  }
+
+  .bento-stage[data-spread='true'] .card-skills {
+    order: 8;
+  }
+
+  .bento-stage[data-spread='true'] .card-projects {
+    order: 9;
+  }
+
+  .bento-stage[data-spread='true'] .card-certifications {
+    order: 10;
+  }
+
+  .bento-stage[data-spread='true'] .card-volunteer {
+    order: 11;
+  }
+
+  .bento-stage[data-spread='true'] .card-top {
+    min-height: auto;
+    max-height: none;
+  }
+
+  .bento-stage[data-spread='true'] .bento-header,
+  .bento-stage[data-spread='true'] .bento-card {
+    width: 100%;
+    max-width: 100%;
+    align-self: stretch;
+  }
+
+  .bento-stage[data-spread='true'] .card-about,
+  .bento-stage[data-spread='true'] .card-skills,
+  .bento-stage[data-spread='true'] .card-certifications,
+  .bento-stage[data-spread='true'] .card-volunteer {
+    max-height: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Row 2 — three columns on large screens only */
+  .bento-stage[data-spread='true'] {
+    display: grid;
+  }
+
   .bento-stage[data-spread='true'] .card-hero {
     grid-column: 1 / 5;
     grid-row: 2;
+    order: unset;
   }
 
   .bento-stage[data-spread='true'] .card-profile {
     grid-column: 5 / 9;
     grid-row: 2;
+    order: unset;
   }
 
   .bento-stage[data-spread='true'] .card-experience {
     grid-column: 9 / 13;
     grid-row: 2;
+    order: unset;
+    max-height: 340px;
   }
 
   .bento-stage[data-spread='true'] .card-top {
     min-height: 260px;
-    max-height: 300px;
+    max-height: none;
   }
 
-  /* Row 3 — aligned second row */
+  /* Row 3 */
   .bento-stage[data-spread='true'] .card-about {
     grid-column: 1 / 5;
     grid-row: 3;
-    max-height: 200px;
+    max-height: none;
+    order: unset;
   }
 
   .bento-stage[data-spread='true'] .card-education {
     grid-column: 5 / 9;
     grid-row: 3;
+    order: unset;
   }
 
   .bento-stage[data-spread='true'] .card-honors {
     grid-column: 9 / 13;
     grid-row: 3;
+    order: unset;
   }
 
   /* Row 4 */
   .bento-stage[data-spread='true'] .card-links {
     grid-column: 1 / 5;
     grid-row: 4;
+    order: unset;
   }
 
   .bento-stage[data-spread='true'] .card-skills {
     grid-column: 5 / 13;
     grid-row: 4;
-    max-height: 280px;
+    max-height: 300px;
+    order: unset;
   }
 
   /* Row 5+ */
   .bento-stage[data-spread='true'] .card-projects {
     grid-column: 1 / -1;
     grid-row: 5;
+    order: unset;
   }
 
   .bento-stage[data-spread='true'] .card-certifications {
     grid-column: 1 / 7;
     grid-row: 6;
-    max-height: 280px;
+    max-height: 300px;
+    order: unset;
   }
 
   .bento-stage[data-spread='true'] .card-volunteer {
     grid-column: 7 / 13;
     grid-row: 6;
-    max-height: 280px;
+    max-height: 300px;
+    order: unset;
   }
 }
