@@ -1,9 +1,13 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { profile } from '../data/resume';
-import profilePhoto from '../assets/profile.jpg';
 import BentoCard from './BentoCard';
 
+import profilePhoto from '../assets/profile.jpg';
+
 export default function ProfileCard({ spread }) {
+  const [imgError, setImgError] = useState(false);
+
   return (
     <BentoCard
       id="profile"
@@ -27,20 +31,27 @@ export default function ProfileCard({ spread }) {
         transition={{ duration: 0.9, delay: 0.25 }}
       >
         <motion.div
-          className="relative h-28 w-28 shrink-0 overflow-hidden rounded-full ring-4 ring-white/25 md:h-32 md:w-32"
+          className="relative flex h-28 w-28 shrink-0 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-[#ff6b9d] via-[#7c6bff] to-[#4ecdc4] ring-4 ring-white/25 md:h-32 md:w-32"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
         >
-          <img
-            src={profilePhoto}
-            alt={profile.name}
-            className="h-full w-full object-cover object-[center_15%]"
-            loading="eager"
-            decoding="async"
-          />
+          {!imgError ? (
+            <img
+              src={profilePhoto}
+              alt={profile.name}
+              className="h-full w-full object-cover object-center"
+              loading="eager"
+              decoding="async"
+              onError={() => setImgError(true)}
+            />
+          ) : (
+            <span className="font-display text-4xl font-semibold text-white md:text-5xl">
+              {profile.initials}
+            </span>
+          )}
         </motion.div>
-        <motion.div className="min-w-0 flex-1">
+        <div className="min-w-0 flex-1">
           <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/65">
             {profile.title}
           </p>
@@ -48,7 +59,7 @@ export default function ProfileCard({ spread }) {
             {profile.name}
           </h1>
           <p className="mt-1.5 text-sm text-white/75">{profile.location}</p>
-        </motion.div>
+        </div>
       </motion.div>
     </BentoCard>
   );
