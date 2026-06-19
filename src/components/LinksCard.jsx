@@ -1,8 +1,4 @@
 import { Code2, Link2, Mail } from 'lucide-react';
-<<<<<<< HEAD
-=======
-
->>>>>>> 68a572463113b3c20a0056b3ecadbfb5a842b4f6
 import { profile } from '../data/resume';
 import BentoCard from './BentoCard';
 
