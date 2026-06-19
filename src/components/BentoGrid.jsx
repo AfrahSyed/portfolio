@@ -10,20 +10,22 @@ import {
 } from 'lucide-react';
 import {
   certifications,
+  about,
   education,
   experience,
   honors,
   profile,
   projects,
   skills,
-  summary,
   volunteer,
 } from '../data/resume';
 import { cleanText } from '../utils/text';
 import BentoCard from './BentoCard';
+import FypCard from './FypCard';
 import Header from './Header';
 import LinksCard from './LinksCard';
 import ProfileCard from './ProfileCard';
+import WorkVideosCard from './WorkVideosCard';
 
 const STAGGER = 0.07;
 
@@ -58,9 +60,11 @@ export default function BentoGrid() {
             <HonorsCard spread={spread} delay={STAGGER * 4} />
             <LinksCard spread={spread} delay={STAGGER * 5} />
             <SkillsCard spread={spread} delay={STAGGER * 6} />
+            <FypCard spread={spread} delay={STAGGER * 7} />
+            <WorkVideosCard spread={spread} delay={STAGGER * 8} />
             <ProjectsSection spread={spread} />
-            <CertificationsCard spread={spread} delay={STAGGER * 8} />
-            <VolunteerCard spread={spread} delay={STAGGER * 9} />
+            <CertificationsCard spread={spread} delay={STAGGER * 10} />
+            <VolunteerCard spread={spread} delay={STAGGER * 11} />
           </motion.div>
         </LayoutGroup>
       </motion.div>
@@ -81,7 +85,7 @@ function HeroCard({ spread, delay }) {
       <Sparkles className="mb-4 text-[var(--color-accent)]" size={22} />
       <div className="flex flex-1 flex-col justify-center">
         <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--color-muted)]">
-          Portfolio | {new Date().getFullYear()}
+          Know me more
         </p>
         <h2 className="mt-3 font-display text-xl leading-[1.12] sm:text-2xl lg:text-[2rem]">
           Turning ideas into{' '}
@@ -106,7 +110,11 @@ function AboutCard({ spread, delay }) {
       <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--color-muted)]">
         About
       </p>
-      <p className="mt-3 text-sm leading-relaxed md:text-[15px]">{summary}</p>
+      <div className="bento-scroll mt-3 max-h-[min(420px,55vh)] space-y-3 pr-0.5 text-sm leading-relaxed text-[var(--color-muted)] lg:max-h-none">
+        {about.map((paragraph) => (
+          <p key={paragraph.slice(0, 32)}>{paragraph}</p>
+        ))}
+      </div>
     </BentoCard>
   );
 }
@@ -236,8 +244,8 @@ function ProjectsSection({ spread }) {
     <BentoCard
       id="projects"
       spread={spread}
-      delay={STAGGER * 10}
-      stackOrder={9}
+      delay={STAGGER * 9}
+      stackOrder={11}
       tone="light"
       cardClass="card-projects"
     >
@@ -267,7 +275,7 @@ function CertificationsCard({ spread, delay }) {
     <BentoCard
       spread={spread}
       delay={delay}
-      stackOrder={10}
+      stackOrder={12}
       tone="mint"
       cardClass="card-certifications bento-scroll max-h-[280px]"
     >
@@ -291,7 +299,7 @@ function VolunteerCard({ spread, delay }) {
     <BentoCard
       spread={spread}
       delay={delay}
-      stackOrder={11}
+      stackOrder={13}
       tone="lavender"
       cardClass="card-volunteer bento-scroll max-h-[360px] overflow-y-auto md:max-h-[400px]"
     >

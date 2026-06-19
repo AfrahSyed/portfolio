@@ -1,6 +1,6 @@
 export const profile = {
   name: 'Afrah Syed',
-  title: 'Full Stack Developer',
+  title: 'MERN Stack Developer',
   location: 'Islamabad, Pakistan',
   phone: '+923362302137',
   email: 'afrahsyed019@gmail.com',
@@ -12,8 +12,38 @@ export const profile = {
   initials: 'AS',
 };
 
-export const summary =
-  'CS graduate and natural problem-solver who builds with the MERN stack, thinks in systems, and leads with purpose. Brings hands-on experience in full-stack development with a genuine love for managing teams, timelines, and deliverables. Driven by a passion for AI and a commitment to code that is clean, scalable, and built to last.';
+export const about = [
+  'I graduated in Computer Science focused on building things people actually want to use. My degree covered algorithms, systems, and databases — but I found my groove in the frontend, where code becomes experience.',
+  "I've shipped production work across the stack and understand how APIs, databases, and servers fit together. That context makes me a sharper frontend developer — I know what's expensive, what's possible, and what to ask for.",
+  "Beyond the code, I move before being asked: spotting UX gaps, pushing through deadlines, mentoring peers when something finally clicks. Off the clock, I'm into films and stories — good storytelling and good UI share the same goal: guide someone through an experience without them noticing the craft.",
+];
+
+export const fyp = {
+  name: 'VoxJobs',
+  video: '/FYP.mp4',
+  intro:
+    'Built an intelligent, voice-interactive job search platform tailored for the Pakistani job market. VoxJobs lets users search, filter, and apply for jobs using natural language — typed or spoken.',
+  features: [
+    'Voice-driven job search using Speech-to-Text (STT) and Text-to-Speech (TTS)',
+    'RAG pipeline for semantic job matching using vector embeddings',
+    'Real-time job scraping from Rozee.pk, Mustakbil.com, and Jobz.pk',
+    'Recruiter dashboard to post jobs and receive applicant CVs directly',
+    'Mock interview practice',
+    'WebSocket-based real-time communication',
+  ],
+  techStack: [
+    'React',
+    'FastAPI',
+    'PostgreSQL (Supabase)',
+    'Vector DB (Chroma)',
+    'LLMs',
+  ],
+};
+
+export const workVideos = [
+  { src: '/v1.mp4', title: 'Project demo 1' },
+  { src: '/v3.mp4', title: 'Project demo 2' },
+];
 
 export const education = {
   degree: 'Bachelor of Science in Computer Science',
@@ -112,11 +142,6 @@ export const volunteer = [
 
 export const projects = [
   {
-    name: 'VoxJobs (FYP)',
-    description:
-      'Voice-driven AI job discovery platform using STT, RAG-based semantic search, and TTS - featuring automated job applications, AI-powered mock interviews, and end-to-end voice command navigation.',
-  },
-  {
     name: 'Eventopia',
     description:
       'Full-stack event management system built with React, FastAPI, and Node.js using PostgreSQL and MongoDB. Integrated agile planning via Jira and containerized deployment through Docker.',
@@ -156,6 +181,7 @@ export const projects = [
 export const navLinks = [
   { label: 'About', href: '#about' },
   { label: 'Experience', href: '#experience' },
+  { label: 'FYP', href: '#fyp' },
   { label: 'Projects', href: '#projects' },
   { label: 'Contact', href: '#contact' },
 ];

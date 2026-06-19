@@ -1,15 +1,8 @@
-import { Code2, Link2, Mail, Phone } from 'lucide-react';
+import { Code2, Link2, Mail } from 'lucide-react';
 import { profile } from '../data/resume';
 import BentoCard from './BentoCard';
 
 const contactItems = [
-  {
-    key: 'phone',
-    href: `tel:${profile.phone.replace(/\s/g, '')}`,
-    icon: Phone,
-    label: profile.phone,
-    external: false,
-  },
   {
     key: 'email',
     href: `mailto:${profile.email}`,
