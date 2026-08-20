@@ -257,6 +257,7 @@ function ProjectsSection({ spread }) {
           <motion.div
             key={p.name}
             className="rounded-2xl border border-[var(--color-ink)]/8 bg-gradient-to-br from-white to-[var(--color-card-sky)] p-4"
+            whileHover={{ y: -4, scale: 1.01 }}
             initial={{ opacity: 0, y: 12 }}
             animate={spread ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
             transition={{ delay: 1.8 + i * 0.04 }}

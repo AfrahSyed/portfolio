@@ -1,6 +1,6 @@
 export const profile = {
   name: 'Afrah Syed',
-  title: 'MERN Stack Developer',
+  title: 'Full Stack Developer',
   location: 'Islamabad, Pakistan',
   phone: '+923362302137',
   email: 'afrahsyed019@gmail.com',
@@ -53,7 +53,7 @@ export const education = {
 
 export const honors = [
   {
-    title: "Dean's List - Fall 2025",
+    title: "Dean's List - Fall 2025 + Spring 2026",
     date: 'Jan 2026',
     school: 'FAST National University of Computer and Emerging Sciences',
     detail: 'Awarded for achieving a GPA of 3.5+ in the semester',

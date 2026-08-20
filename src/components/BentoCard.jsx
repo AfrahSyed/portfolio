@@ -31,13 +31,14 @@ export default function BentoCard({
       layoutId={id || cardClass || 'card'}
       className={`
         bento-card relative overflow-hidden rounded-3xl p-4 md:p-5
-        shadow-[0_8px_30px_rgba(26,31,58,0.08)]
+        shadow-[0_10px_32px_rgba(26,31,58,0.10)] transition-shadow duration-300 hover:shadow-[0_18px_44px_rgba(26,31,58,0.16)]
         ${isCenter ? 'bento-card--center' : ''}
         ${cardClass}
         ${toneClass}
         ${className}
       `}
       initial={false}
+      whileHover={spread ? { y: -4, transition: { duration: 0.22, ease: 'easeOut' } } : undefined}
       animate={
         isCenter
           ? {

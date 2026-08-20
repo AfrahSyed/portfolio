@@ -4,7 +4,7 @@ import { profile, navLinks } from '../data/resume';
 export default function Header({ spread }) {
   return (
     <motion.header
-      className="bento-header box-border flex w-full min-w-0 shrink-0 flex-col gap-4 rounded-2xl bg-[var(--color-card)] px-4 py-3.5 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:px-6 sm:py-4 md:px-8"
+      className="bento-header box-border flex w-full min-w-0 shrink-0 flex-col gap-4 rounded-2xl border border-white/70 bg-[var(--color-card)]/90 px-4 py-3.5 shadow-[0_8px_28px_rgba(26,31,58,0.06)] backdrop-blur sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:px-6 sm:py-4 md:px-8"
       layout
       initial={{ opacity: 0, y: -8 }}
       animate={{ opacity: spread ? 1 : 0, y: spread ? 0 : -8 }}
@@ -19,7 +19,7 @@ export default function Header({ spread }) {
           <a
             key={link.href}
             href={link.href}
-            className="whitespace-nowrap text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--color-muted)] transition-colors hover:text-[var(--color-accent-3)] sm:text-xs sm:tracking-[0.18em]"
+            className="whitespace-nowrap text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--color-muted)] transition-colors hover:text-[var(--color-accent-3)] focus-visible:text-[var(--color-accent-3)] sm:text-xs sm:tracking-[0.18em]"
           >
             {link.label}
           </a>

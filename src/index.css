@@ -4,8 +4,8 @@
   --font-display: 'Playfair Display', Georgia, serif;
   --font-sans: 'DM Sans', system-ui, sans-serif;
   --color-canvas: #e8f4fc;
-  --color-frame: #1a1f3a;
-  --color-card: #fffef9;
+  --color-frame: #151b36;
+  --color-card: #fffdf9;
   --color-card-alt: #fff0f3;
   --color-card-mint: #e8fff4;
   --color-card-sky: #e3f0ff;
@@ -26,12 +26,21 @@ html {
   scroll-behavior: smooth;
 }
 
+:focus-visible {
+  outline: 3px solid rgba(255, 91, 147, 0.7);
+  outline-offset: 4px;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
   font-family: var(--font-sans);
   color: var(--color-ink);
-  background: linear-gradient(145deg, #dbeafe 0%, #fce7f3 45%, #d1fae5 100%);
+  background:
+    radial-gradient(circle at 12% 8%, rgba(255, 255, 255, 0.9), transparent 32%),
+    radial-gradient(circle at 88% 12%, rgba(255, 184, 213, 0.5), transparent 28%),
+    linear-gradient(145deg, #dbeafe 0%, #fce7f3 48%, #d1fae5 100%);
+  background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -91,6 +100,70 @@ body {
 
 .font-display {
   font-family: var(--font-display);
+}
+
+.contact-card {
+  background: linear-gradient(135deg, #171d3a 0%, #20294d 100%);
+  isolation: isolate;
+}
+
+.contact-orb {
+  position: absolute;
+  top: 1.3rem;
+  right: 1.45rem;
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 999px;
+  background: #4ecdc4;
+  box-shadow: 0 0 0 6px rgba(78, 205, 196, 0.14), 0 0 24px rgba(78, 205, 196, 0.65);
+  animation: contact-pulse 2.8s ease-in-out infinite;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  min-height: 3.5rem;
+  gap: 0.65rem;
+  border-radius: 1rem;
+  padding: 0.65rem 0.85rem;
+  color: rgba(255, 255, 255, 0.84);
+  background: rgba(255, 255, 255, 0.11);
+  transition: transform 220ms ease, background-color 220ms ease, box-shadow 220ms ease;
+}
+
+.contact-link:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.17);
+}
+
+.contact-link--primary {
+  color: white;
+  background: linear-gradient(100deg, #ff5b93, #f95e9b);
+  box-shadow: 0 10px 24px rgba(255, 91, 147, 0.24);
+}
+
+.contact-link--primary:hover {
+  background: linear-gradient(100deg, #ff6da2, #ff5b93);
+  box-shadow: 0 14px 30px rgba(255, 91, 147, 0.34);
+}
+
+.contact-link__icon {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 999px;
+  color: white;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+@keyframes contact-pulse {
+  50% { transform: scale(1.18); box-shadow: 0 0 0 8px rgba(78, 205, 196, 0.08), 0 0 30px rgba(78, 205, 196, 0.65); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }
 
 .bento-scroll {
@@ -165,6 +238,19 @@ body {
   width: min(300px, 92vw);
   max-width: 320px;
   z-index: 40;
+}
+
+/* The profile card is already at its final desktop destination on first paint. */
+@media (min-width: 1024px) {
+  .bento-stage:not([data-spread='true']) .card-profile {
+    grid-column: 5 / 9;
+    grid-row: 2;
+    width: 100%;
+    min-height: 260px;
+    max-width: none;
+    justify-self: stretch;
+    align-self: stretch;
+  }
 }
 
 .bento-stage:not([data-spread='true']) .bento-header {
